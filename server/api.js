@@ -7,10 +7,24 @@ const router = express.Router()
 
 router.post('/user', async (req, res) => {
   const salt = randomBytes(16).toString("hex");
-  const { username, password } = req.body
-  await createUser(username, hashPassword(password, salt), salt)
-  res.json({
-    note: `User ${username} was created`
+  const { username, password, token } = req.body
+  if (token !== process.env.TOKEN) {
+    return res.json({
+      note: 'Token is wrong'
+    })
+  }
+  try {
+    user = await getUserByUsername(username)
+  } catch (e) {
+    if (e.message === `user ${username} does not exist`) {
+      await createUser(username, hashPassword(password, salt), salt)
+      return res.json({
+        note: `User ${username} was created`
+      })
+    }
+  }
+  return res.json({
+    note: `${username} already exist`
   })
 })
 
