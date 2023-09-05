@@ -50,7 +50,7 @@ const TodoList = () => {
 
   const itemList = list.map((item) => 
     <li class="todo-element">
-      <span className={`todo-item-title ${item.COMPLETED_AT && 'todo-item-fulfilled'}`}>{item.title}</span>
+      <span className={`todo-item-title ${!!item.COMPLETED_AT && 'todo-item-fulfilled'}`}>{item.title}</span>
       <span class="delete-icon" onClick={() => onDeleteItemFromList(item.id)}><i class="fas fa-trash"></i></span>
       {
         !item.COMPLETED_AT && <span class="fulfill-icon" onClick={() => onFulfillItemFromList(item.id)}><i class="fas fa-solid fa-check"></i></span>
