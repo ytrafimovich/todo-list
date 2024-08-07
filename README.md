@@ -9,6 +9,25 @@ yarn start
 ```
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Start
+To start project in production use pm2
+
+```
+pm2 start index.js
+```
+
+See list of processes
+
+```
+pm2 list
+```
+
+Kill process
+
+```
+pm2 kill <id>
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
