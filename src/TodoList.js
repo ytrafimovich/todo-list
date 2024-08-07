@@ -3,7 +3,10 @@ import axios from 'axios'
 
 const TodoList = () => {
   const [todoItem, onItemChange] = useState('')
-  const [list, updateList] = useState([])
+  const [list, onUpdateList] = useState([])
+  const updateList = (newList) => {
+    onUpdateList(newList.sort((a, b) => (b.COMPLETED_AT === null) - (a.COMPLETED_AT === null)))
+  }
   const token = localStorage.getItem('token')
   const headers = {
     authorization: `Bearer ${token}`
