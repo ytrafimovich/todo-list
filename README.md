@@ -25,7 +25,7 @@ pm2 list
 Kill process
 
 ```
-pm2 kill <id>
+pm2 stop <id>
 ```
 
 ## Available Scripts
